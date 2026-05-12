@@ -103,11 +103,11 @@ ipython_config.py
 
 # PEP 582; used by e.g. github.com/fannheyward/coc-pyright
 __pypackages__/
-
+.agents
 # Celery stuff
 celerybeat-schedule
 celerybeat.pid
-
+student-knowledge-base.md
 # SageMath parsed files
 *.sage.py
 

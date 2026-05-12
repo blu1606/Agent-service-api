@@ -1,5 +1,6 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from enum import Enum
+from pathlib import Path
 
 class Environment(str, Enum):
     DEVELOPMENT = "development"
@@ -9,6 +10,7 @@ class Environment(str, Enum):
 class LLMProvider(str, Enum):
     GOOGLE = "google"
     OPENAI = "openai"
+    GROQ = "groq" # ← Thêm Groq
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "Nexus AI"
@@ -24,6 +26,7 @@ class Settings(BaseSettings):
 
     GOOGLE_API_KEY: str
     OPENAI_API_KEY: str = ""
+    GROQ_API_KEY: str = "" # ← Thêm Groq API Key
 
     ALLOWED_ORIGINS: list[str] = ["*"]
 

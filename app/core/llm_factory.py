@@ -25,6 +25,13 @@ class LLMFactory:
                     api_key = settings.OPENAI_API_KEY,
                     temperature = target_temp
                 )
+            case "groq" | LLMProvider.GROQ:
+                from langchain_groq import ChatGroq
+                return ChatGroq(
+                    model_name = target_model, # Groq dùng model_name hoặc model
+                    api_key = settings.GROQ_API_KEY,
+                    temperature = target_temp
+                )
             case _:
                 raise ValueError("Invalid Provider")
 
