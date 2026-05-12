@@ -1,7 +1,7 @@
 from langgraph.graph import StateGraph, START, END
 from app.agents.state import State
 from app.agents.nodes import make_reasoning_node, make_tool_node
-
+from langgraph.checkpoint.memory import MemorySaver
 
 def should_continue(state: State):
     last_message = state["messages"][-1]
@@ -23,4 +23,5 @@ def build_react_graph(llm, tools:list):
     workflow.add_conditional_edges("reasoning", should_continue, {"tools": "tools", END:END })
     workflow.add_edge("tools", "reasoning")
 
-    return workflow.compile()
+    memory = MemorySaver()
+    return workflow.compile(checkpointer=memory)

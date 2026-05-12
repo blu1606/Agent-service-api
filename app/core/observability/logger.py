@@ -18,7 +18,7 @@ class IndustryLogger:
         self.logger.setLevel(logging.INFO)
         
         # File Handler (JSON)
-        log_file = os.path.join(log_dir, f"{datetime.now().strftime('%Y-%m-%d')}.log")
+        log_file = os.path.join(settings.LOG_DIR, f"{datetime.now().strftime('%Y-%m-%d')}.log")
         file_handler = logging.FileHandler(log_file)
         
         # Console Handler
@@ -31,8 +31,8 @@ class IndustryLogger:
         """Logs an event with a timestamp and type."""
         payload = {
             "timestamp": datetime.utcnow().isoformat(),
-            "node": node_name,
-            "update": state_update
+            "event_type": event_type,
+            "data": data
         }
         self.logger.info(json.dumps(payload, ensure_ascii=False))
 

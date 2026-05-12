@@ -1,8 +1,10 @@
+from pathlib import Path
+
 def save_graph_as_png(app, path="agent_graph.png"):
     """Lưu đồ thị ra file ảnh."""
     if Path("agent_graph.png").exists():
         return
-        
+
     try:
         image_data = app.get_graph().draw_mermaid_png()
         with open(path, "wb") as f:
